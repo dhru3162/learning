@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id    String @id @default(cuid())
+  name  String
+  email String @unique
+  phone String
+  age   Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@map("users")
+}
+
+enum ImportStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model ImportJob {
+  id               String       @id
+  fileName         String
+  filePath         String
+  totalRecords     Int          @default(0)
+  processedRecords Int          @default(0)
+  successRecords   Int          @default(0)
+  failedRecords    Int          @default(0)
+  status           ImportStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  errors ImportError[]
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("import_jobs")
+}
+
+model ImportError {
+  id          String @id @default(cuid())
+  importJobId String
+  rowNumber   Int
+
+  name  String?
+  email String?
+  phone String?
+  age   String?
+
+  errorReason String
+
+  createdAt DateTime @default(now())
+
+  importJob ImportJob @relation(fields: [importJobId], references: [id])
+
+  @@index([importJobId])
+  @@map("import_errors")
+}

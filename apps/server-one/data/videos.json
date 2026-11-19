@@ -1,0 +1,20 @@
+[
+  {
+    "id": "942e6da0-4fda-49d8-94f4-5b101fc3cf0b",
+    "title": "My First Video",
+    "filename": "19ccdb89-d578-4a2f-8090-a6fd89b952ab.mp4",
+    "originalName": "Screen Recording 2026-08-10 121949.mp4",
+    "mimeType": "video/mp4",
+    "size": 6761277,
+    "createdAt": "2026-11-02T12:14:42.357Z"
+  },
+  {
+    "id": "8ef6c48c-09bf-49e7-a789-e665f3fd0cfd",
+    "title": "New Video",
+    "filename": "f3278bc6-0f4a-4ede-b338-ecf11ef1b755.mp4",
+    "originalName": "mp4-493mb-sample.mp4",
+    "mimeType": "video/mp4",
+    "size": 516560568,
+    "createdAt": "2026-11-04T08:01:57.923Z"
+  }
+]
